@@ -5,6 +5,12 @@ const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
 const routes = require('./routes');
+const 
+
+const connection = MONGO_URL;
+mongoose.connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+    .then(() => console.log("Database Connected Successfully"))
+    .catch(err => console.log(err));
 
 const app = express();
 const PORT = process.env.PORT || 3001;
